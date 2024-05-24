@@ -1,0 +1,68 @@
+// Display Content Advice and First Australians labels
+// colldiscovery.includes IDs need updating if used by other institutions
+
+  
+
+app.component('prmSearchResultJournalIndicationLineAfter', { 
+
+    bindings: { 
+
+        parentCtrl: '<' 
+
+    }, 
+
+    controller: function() { 
+
+        var vm = this; 
+
+  
+
+            vm.showFirstAustralians = function() { 
+
+                if (vm.parentCtrl.item.pnx.control && vm.parentCtrl.item.pnx.control.colldiscovery && vm.parentCtrl.item.pnx.control.colldiscovery.length > 0) { 
+
+                    for (var i = 0; i < vm.parentCtrl.item.pnx.control.colldiscovery.length; i++) { 
+
+                        var colldiscovery = vm.parentCtrl.item.pnx.control.colldiscovery[i]; 
+
+                        if (colldiscovery.includes('81111899990002381') || colldiscovery.includes('81111899980002381') || colldiscovery.includes('81111899970002381') || colldiscovery.includes('81113809970002381') || colldiscovery.includes('81124995010002381') || colldiscovery.includes('81111899960002381') || colldiscovery.includes('81123781620002381') || colldiscovery.includes('81126495120002381')) { 
+
+                            return true; 
+
+                        } 
+
+                    } 
+
+                } 
+
+                return false; 
+
+            }; 
+
+ 
+
+        vm.$onInit = function() { 
+
+            vm.showContentAdvice = function() { 
+
+                if (vm.parentCtrl.item.pnx.display.lds06 && vm.parentCtrl.item.pnx.display.lds06.length > 0) { 
+
+                    vm.ContentAdvice = vm.parentCtrl.item.pnx.display.lds06[0]; 
+
+                    return true; 
+
+                } else { 
+
+                    return false; 
+
+                } 
+
+            }; 
+
+        }; 
+
+    }, 
+
+    template: '<div ng-if="$ctrl.showFirstAustralians()"> <div class="FirstAustraliansTooltip" style="pointer-events: all;" role="tooltip"><span class="FirstAustraliansIcon">First Australians</span> </div></div> <div ng-if="$ctrl.showContentAdvice()"> <div class="ContentAdviceTooltip" style="pointer-events: all;" role="tooltip"> <span class="ContentAdviceIcon">Content Advice</span> </div> </div>' 
+
+}); 
