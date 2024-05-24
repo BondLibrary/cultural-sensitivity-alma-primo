@@ -1,0 +1,20 @@
+//Using the Trove API to find QBON holdings with the Cultural sensitivity flag. 
+//The NUC symbol and reclevel parameter must be included to get holdings (i.e. MMS IDs)
+//This method depends on holdings being contributed via OAI-PMH
+
+  https://api.trove.nla.gov.au/v3/result?key=[API KEY HERE]&category=all&l-culturalSensitivity=y&l-partnerNuc=[NUC HERE]&s=%2A&n=100&sortby=relevance&bulkHarvest=false&reclevel=full&include=holdings&encoding=xml 
+
+//The first API query result will show you the total titles for your institution that match the query for each resource category (you also see all the NUCs of others who also hold the title). Only 100 results per category can be returned at a time, e.g. for Books, QBON holds 913 titles identified as culturally sensitive: 
+
+<response> 
+<category code="book" name="Books &amp; Libraries"> 
+<records s="*" n="100" total="913" next="https://api.trove.nla.gov.au/v3/result?category=all&amp;l-culturalSensitivity=y&amp;l-partnerNuc=QBON&amp;n=100&amp;sortby=relevance&amp;bulkHarvest=false&amp;reclevel=full&amp;include=holdings&amp;encoding=xml&amp;s=AoIIQZsvqClzdTg0ODAyNjg%3D" nextStart="AoIIQZsvqClzdTg0ODAyNjg="> 
+
+//The CursorMark value called 'nextStart' is included in your results if there are more pages of results. The nextStart value will be different for each page of results. To retrieve the next 100 titles, you need to include the category and the nextStart value (in the example above the category is “book” and the nextStart value for the book category is "AoIIQZsvqClzdTg0ODAyNjg=") 
+
+https://api.trove.nla.gov.au/v3/result?key=[API KEY HERE]&category=book&l-culturalSensitivity=y&l-partnerNuc=[NUC HERE]&s=AoIIQZsvqClzdTg0ODAyNjg=&n=100&sortby=relevance&bulkHarvest=false&reclevel=full&include=holdings&encoding=xml 
+
+//Repeat this as many times as needed for each category, or figure out how to do it via a script. :)
+//Titles will appear in multiple categories, e.g. a title might appear in the book category as well as the diary category, so don’t be surprised if the total results seem higher than expected. 
+//Output data into spreadsheet and tidy up (deduplicate titles, remove other NUC holdings, etc etc). 
+//Use the OAI-PMH identifier to isolate the MMS IDs 
