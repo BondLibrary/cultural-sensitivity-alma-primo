@@ -1,0 +1,30 @@
+rule "Primo VE DC - Lsr06"
+	when
+                DCMI is "dc"."XXX"
+                 DCMI."dcterms"."description" match "Aboriginal and Torres Strait Islander.*advis.*"
+	then
+		create pnx."search"."lsr06" with "Cultural sensitivity: Aboriginal and Torres Strait Islander peoples"
+		create pnx."search"."lsr06" with "Has content advice note"
+end
+
+
+rule "Primo VE DC - Lsr06-2"
+	when
+	#	 DCMI is "dc"."XXX"
+                 DCMI."dcterms"."description" match "Aboriginal and Torres Strait Islander.*advis.*" 
+                OR
+                 DCMI."dc"."description" match "Aboriginal and Torres Strait Islander.*advis.*" OR
+                 DCMI."dcterms"."description" match "Culturally sensitive" OR
+                DCMI."dc"."description" match "Culturally sensitive"
+	then
+		create pnx."search"."lsr06" with "Cultural sensitivity: Aboriginal and Torres Strait Islander peoples"
+		create pnx."search"."lsr06" with "Has content advice note"
+end
+
+#OOTB rule below
+#rule "Primo VE DC - Lsr06"
+#	when
+#		DCMI is "dc"."XXX"
+#	then
+#		create pnx."search"."lsr06" with DCMI."dc"."XXX"
+#end

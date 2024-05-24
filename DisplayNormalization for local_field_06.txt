@@ -1,0 +1,21 @@
+rule "Add field 520 indicator 4 - cultural sensitivity"
+priority 2
+when
+existsControl "001.*0541" AND
+not exists "520.{4,-}.a.Aboriginal and Torres Strait Islander peoples*" AND 
+not exists "500.a. Aboriginal and Torres Strait Islander peoples*" AND
+not exists "590.a.Aboriginal and Torres Strait Islander peoples*"
+then
+addField "520.{4,-}.a.Aboriginal and Torres Strait Islander peoples are advised this resource may contain images, transcripts or names of people now deceased. It may also contain historically and culturally sensitive words, terms, and descriptions."
+end
+
+#rule "Add field as 59X as local extension if MMSID is not a local record Sandbox ends with 0541" 
+#priority 1 
+#when
+#not existsControl "001.*0541" AND
+#not exists "590.a.Aboriginal and Torres Strait Islander peoples*" AND
+#not exists "520.{4,*}.a.Aboriginal and Torres Strait Islander peoples*"
+#then 
+#addField "590.a.Aboriginal and Torres Strait Islander peoples are advised this resource may contain images, transcripts or names of people now deceased. It may also contain historically and culturally sensitive words, terms, and descriptions" 
+#addSubField "590.9.local" if (exists "590.a.Aboriginal and Torres Strait Islander peoples are advised this resource may contain images, transcripts or names of people now deceased. It may also contain historically and culturally sensitive words, terms, and descriptions") 
+#end 

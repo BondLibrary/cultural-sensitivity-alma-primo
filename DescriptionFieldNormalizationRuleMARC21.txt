@@ -1,0 +1,26 @@
+rule "Primo VE - Description 520"
+priority 2
+	when
+        MARC is "520" AND NOT
+        MARC."520".ind"1" equals "4"
+	then
+        create pnx."display"."description" with MARC."520" excluding num subfields without sort
+end
+
+
+
+rule "Primo VE - Description 880-520"
+	when
+        MARC is "880" AND
+        MARC."880"."6" match "520-.*"
+	then
+        create pnx."display"."description" with MARC."880" excluding num subfields without sort
+end
+
+#original portion of rule commented out, remainder of original is the 880 bit above
+#rule "Primo VE - Description 520"
+#	when
+#        MARC is "520"
+#	then
+#        create pnx."display"."description" with MARC."520" excluding num subfields without sort
+#end

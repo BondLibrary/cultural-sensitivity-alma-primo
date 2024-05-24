@@ -1,0 +1,56 @@
+rule "Primo VE Marc - Lsr06"
+priority 1
+	when
+MARC is "520"."a"
+AND MARC."520".ind"1" equals "4" AND
+MARC."520"."a" match "Aboriginal and Torres Strait Islander.*advise.*"
+	then
+create pnx."search"."lsr06" with "Cultural sensitivity: Aboriginal and Torres Strait Islander peoples"
+end
+
+rule "Primo VE Marc - Lsr06-2"
+priority 2
+	when
+MARC is "520"."a"
+AND MARC."520".ind"1" equals "4" AND 
+(MARC."520"."a" match ".*child.*" OR MARC."520"."a" match ".*adult.*")
+	then
+create pnx."search"."lsr06" with "Age appropriateness"
+end
+
+rule "Primo VE Marc - Lsr06-3"
+priority 3
+	when
+MARC is "520"."a"
+AND MARC."520".ind"1" equals "4" AND 
+(MARC."520"."a" match ".*suicide.*" OR MARC."520"."a" match ".*self-harm.*" OR MARC."520"."a" match ".*explicit language.*" )
+	then
+create pnx."search"."lsr06" with "Wellbeing"
+end
+
+rule "Primo VE Marc - Lsr06-4"
+priority 4
+	when
+MARC is "520"."a"
+AND MARC."520".ind"1" equals "4" AND 
+(MARC."520"."a" match ".*racial.*" OR MARC."520"."a" match ".*colonisa.*" OR MARC."520"."a" match ".*colonial.*"  )
+	then
+create pnx."search"."lsr06" with "Historical context"
+end
+
+rule "Primo VE Marc - Lsr06-5"
+priority 5
+	when
+MARC is "520"."a"
+AND MARC."520".ind"1" equals "4" 
+	then
+create pnx."search"."lsr06" with "Has content advice note"
+end
+
+#OOTB rule below
+#rule "Primo VE Marc - Lsr06"
+#	when
+#		MARC is "XXX"."a"
+#	then
+#		create pnx."search"."lsr06" with MARC "XXX"."a"
+#end

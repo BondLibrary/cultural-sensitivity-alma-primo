@@ -1,0 +1,17 @@
+rule "Primo VE - Lds06"
+	when
+DCMI."dcterms"."description" match "Aboriginal and Torres Strait Islander.*"
+then
+set  TEMP"1" to DCMI."dcterms"."description"
+add prefix (TEMP"1","<span class=\"ContentAdvice\">") 
+add suffix (TEMP"1"," <a href=\"https://bond.edu.au/library/about-library/inclusion\"  title=\"More information\" target=\"_blank\">More information</a></span>")
+create pnx."display"."lds01" with TEMP"1"
+end
+
+#OOTB rule below
+#rule "Primo VE - Lds06"
+#	when
+#		DCMI is "dc"."XXX"
+#	then
+#		create pnx."display"."lds06" with DCMI."dc"."XXX"
+#end
