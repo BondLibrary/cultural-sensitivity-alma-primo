@@ -1,0 +1,165 @@
+* Content Advice and First Australian label styling begin */ 
+
+ 
+
+/* Add icons */ 
+
+.FirstAustraliansIcon:before { 
+
+    content: "\f111"; /*circle*/ 
+
+    font-family: 'FontAwesome'; 
+
+    padding-right:6px; 
+
+color: #f1b821; 
+
+} 
+
+.ContentAdviceIcon:before { 
+
+    content: "\f024"; /*flag*/ 
+
+    font-family: 'FontAwesome'; 
+
+    padding-right:6px; 
+
+color: #880000; 
+
+} 
+
+/* Style the icon label similar to other icon labels */ 
+
+.FirstAustraliansIcon, .ContentAdviceIcon { 
+
+    text-transform: uppercase; 
+
+    font-weight: 600; 
+
+    font-size: 12px; 
+
+    letter-spacing: 0.03em; 
+
+    font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif; 
+
+    margin-right: 0.75em; 
+
+} 
+
+/* Make all the labels appear on the same line and put First Australians first */ 
+
+.badges { 
+
+order:2; 
+
+} 
+
+prm-search-result-journal-indication-line { 
+
+    display: flex; 
+
+z-index: 100; /*ensures tooltip text is stacked infront*/ 
+
+} 
+
+prm-search-result-journal-indication-line-after { 
+
+    display: flex; 
+
+    align-items: center; 
+
+z-index: 0; 
+
+} 
+
+/* Tooltip styling for labels */ 
+
+.FirstAustraliansTooltip::before { 
+
+visibility:hidden; 
+
+position: fixed; 
+
+content: "This resource is by or about First Australians"; 
+
+font-size: .8em; 
+
+letter-spacing: .03em; 
+
+border-radius: 4px; 
+
+    padding: 3px 6px; 
+
+margin-top: 32px; 
+
+} 
+
+.ContentAdviceTooltip::before { 
+
+visibility:hidden; 
+
+position: fixed; 
+
+content: "View the full record for advice about this resource"; 
+
+font-size: .8em; 
+
+letter-spacing: .03em; 
+
+border-radius: 4px; 
+
+    padding: 3px 6px; 
+
+margin-top: 32px; 
+
+} 
+
+.FirstAustraliansTooltip:hover::before, .ContentAdviceTooltip:hover::before { 
+
+visibility:visible; 
+
+color: #fff; 
+
+background-color: rgba(0, 0, 0, .62);     
+
+} 
+
+/* Hide Content Advice description on results page*/ 
+
+prm-brief-result-container.list-item .ContentAdvice { 
+
+display:none; 
+
+} 
+
+/* Style Content Advice description in a box at the top of the full record */ 
+
+prm-full-view-service-container .item-detail .ContentAdvice { 
+
+    background-color: #e5eaef; 
+
+    display: block; 
+
+    padding: 10px; 
+
+    margin: 5px; 
+
+box-shadow: 3px 3px 4px #00000029; 
+
+} 
+
+/* Add open in new tab icon to more information link in Content Advice description */ 
+
+.ContentAdvice a::after { 
+
+    content: "\f08e"; 
+
+    font-family: 'FontAwesome'; 
+
+    padding-left: 3px; 
+
+    font-size: 12px; 
+
+} 
+
+/* Content Advice and First Australian label styling end */ 
