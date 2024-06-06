@@ -5,3 +5,5 @@ Bond's configuration deployed to Library Search in May 2024 - https://librarysea
 
 Introductory video: [Video demonstration](https://vimeo.com/949758271/42d670a317)]
 (https://vimeo.com/949758271/42d670a317)
+
+Scripts provided by University of Newcastle (Australia) Library for API integration Trove/Alma
